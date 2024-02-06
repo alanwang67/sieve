@@ -10,7 +10,7 @@ defmodule SieveTest do
       (sieve |> Sieve.get(k) == v) && acc end) == true
     assert List.foldl([ {7,3,0}, {6,2,0}, {5,1,0} ], true, fn (x,acc) ->
       {k,_,_} = x
-      (sieve |> Sieve.get(k) == true) && acc end) == true
+      (sieve |> Sieve.contains(k) == true) && acc end) == true
     assert sieve.hand == -1
     assert sieve.size == 3
     assert Map.new(sieve.queue, fn x -> {x.key, x} end) == sieve.cache
